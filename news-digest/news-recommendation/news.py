@@ -3,7 +3,7 @@
 from eventregistry import *
 
 er = EventRegistry(apiKey = '81b0c82b-624f-4eea-8ccd-43c53036beff')
-USER_PREFERENCE = "Travel"
+USER_PREFERENCE = "Fashion"
 
 def recommend_news(user_preference):
     # manually create a new topic page
@@ -40,4 +40,4 @@ file_path = 'news-digest/news-recommendation/recommended_news.json'
 with open(file_path, 'w') as file:
     json.dump(news_data, file, indent=4)
 
-print(f"News data saved to {file_path}")
+#print(f"News data saved to {file_path}")
