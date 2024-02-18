@@ -27,6 +27,33 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category }) => {
 
     const goToRecsPage = () => {} 
 
+    const selectCategory = async () => {
+        // const response = await fetch(/* news API */) // this sends data to the flask server
+        // const json = await response.json(); // this parses the response to json
+        // do stuff with the json response
+        // navigate('/recs');
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "user_pref": category
+        });
+
+        fetch("/json_example", {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => {
+                console.error(error)
+            });
+    };
 
 
     return (
@@ -39,7 +66,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category }) => {
                     <option value="2">Somewhat familiar</option>
                     <option value="3">Very familiar</option>
                 </select>
-                <button onClick={goToRecsPage}>Generate news</button>
+                <button onClick={selectCategory}>Generate news</button>
             </div>
         </div>
     );
@@ -65,34 +92,6 @@ const MainPage: React.FC = () => {
     const [categories, setCategories] = useState(getRandomCategories());
     const [showForm, setShowForm] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
-
-    async () => {
-        // const response = await fetch(/* news API */) // this sends data to the flask server
-        // const json = await response.json(); // this parses the response to json
-        // do stuff with the json response
-        // navigate('/recs');
-
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        const raw = JSON.stringify({
-            "user_pref": selectedCategory
-        });
-
-        fetch("http://127.0.0.1:5000/json_example", {
-            method: "POST",
-            headers: myHeaders,
-            body: raw,
-            redirect: "follow"
-        })
-            .then((response) => response.json())
-            .then((result) => {
-                console.log(result)
-            })
-            .catch((error) => {
-                console.error(error)
-            });
-    };
 
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category);
