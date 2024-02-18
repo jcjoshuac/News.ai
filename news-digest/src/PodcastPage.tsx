@@ -45,7 +45,7 @@ const PodcastPage: React.FC = () => {
     <div className="podcast-player">
       <h1>Selected News Podcast</h1>
       <p>{state?.title}</p>
-      <audio ref={audioRef} src="path_to_your_audio_file.mp3" preload="none" />
+      <audio ref={audioRef} src="/sample_audio.m4a" preload="true" />
       <button onClick={togglePlayPause} className="play-pause-button">
         {isPlaying ? '⏸' : '▶'}
       </button>

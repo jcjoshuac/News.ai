@@ -48,7 +48,7 @@ def txt2speech(familiarity_score, article):
 
     
     monster_client = client('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjJmNjUyZTFjYTNiOTVkNWJjNWY4ZGVhNjE0Y2Y0Yzc3IiwiY3JlYXRlZF9hdCI6IjIwMjQtMDItMThUMDg6MDA6MTYuMzc3MDMxIn0.TuFCl4uib0elL7l-oUzG0mqdAOSRHoN3Z8xgBQjLQPg')
-    response = monster_client.get_response(model='sunoai-bark', data={"prompt": final_content, 'speaker':'de_speaker_4', 'text_temp':0.3, 'wave_temp':0.3, "sample_rate": 27000})
+    response = monster_client.get_response(model='sunoai-bark', data={"prompt": final_content, 'speaker':'de_speaker_4'})
     audio = monster_client.wait_and_get_result(response['process_id'],timeout=200)
 
     return audio
