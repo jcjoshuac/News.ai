@@ -1,9 +1,23 @@
 # NewsAPI: 81b0c82b-624f-4eea-8ccd-43c53036beff
 
 from eventregistry import *
+from flask import Flask, app, request
+
+app = Flask(__name__)
 
 er = EventRegistry(apiKey = '81b0c82b-624f-4eea-8ccd-43c53036beff')
-USER_PREFERENCE = "Fashion"
+
+@app.route('/json_example', methods=['POST'])
+def handle_json():
+    data = request.json
+    '''ex json body request
+    {
+        "user_pref": "Technology"
+    }
+    '''
+    user_pref = data.get('user_pref') # this gets the user pref key from react's fetch request
+    recommendations = recommend_news(user_pref)
+    return to_json(recommendations)
 
 def recommend_news(user_preference):
     # manually create a new topic page
@@ -25,19 +39,13 @@ def recommend_news(user_preference):
     articles = topic.getArticles(page=1, count = 20, sortBy="rel")
     return articles
 
-recommendations = recommend_news(USER_PREFERENCE)
 
-# Prepare data for JSON
-news_data = [{
-    "title": article.get("title", "No title available"),
-    "content": article.get("body", "No content available"), # or "content" based on the API response
-    "link": article.get("url", "No URL available")
-} for article in recommendations.get("articles", {}).get("results", [])]
+def to_json(recommendations):
+    news_data = [{
+        "title": article.get("title", "No title available"),
+        "content": article.get("body", "No content available"), # or "content" based on the API response
+        "link": article.get("url", "No URL available")
+    } for article in recommendations.get("articles", {}).get("results", [])]
 
-# Define file path
-file_path = 'news-digest/news-recommendation/recommended_news.json'
-
-with open(file_path, 'w') as file:
-    json.dump(news_data, file, indent=4)
-
-#print(f"News data saved to {file_path}")
+    json_string = json.dumps(news_data, indent=4)  # 'indent' for pretty-printing
+    return json_string
