@@ -1,22 +1,16 @@
 export enum NewsCategory {
-    WorldNews = "World News",
-    NationalNews = "National News",
     Politics = "Politics",
     Business = "Business",
     Technology = "Technology",
-    Science = "Science",
-    Health = "Health",
     Education = "Education",
     Entertainment = "Entertainment",
     Sports = "Sports",
-    Environment = "Environment",
     Economy = "Economy",
-    Legal = "Legal",
     Lifestyle = "Lifestyle",
-    SocialMedia = "Social Media",
     Travel = "Travel",
     Art = "Art",
     Automotive = "Automotive",
     Culture = "Culture",
-    Fashion = "Fashion"
+    Fashion = "Fashion",
+    Food = "Food"
 }

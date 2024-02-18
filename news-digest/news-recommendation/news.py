@@ -2,8 +2,10 @@
 
 from eventregistry import *
 from flask import Flask, app, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 er = EventRegistry(apiKey = '81b0c82b-624f-4eea-8ccd-43c53036beff')
 
@@ -36,7 +38,7 @@ def recommend_news(user_preference):
     topic.setArticleHasEventFilter("skipArticlesWithoutEvent")
     topic.setLanguages("eng")
 
-    articles = topic.getArticles(page=1, count = 20, sortBy="rel")
+    articles = topic.getArticles(page=1, count = 20, sortBy="date")
     return articles
 
 
