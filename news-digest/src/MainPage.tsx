@@ -45,8 +45,24 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category }) => {
   );
 };
 
+const getRandomCategories = () => {
+    const allCategories: string[] = Object.values(NewsCategory);
+    let randomCategories: string[] = [];
+  
+    while (randomCategories.length < 3) {
+      const randomIndex = Math.floor(Math.random() * allCategories.length);
+      const category: string = allCategories[randomIndex];
+  
+      if (!randomCategories.includes(category)) {
+        randomCategories.push(category);
+      }
+    }
+  
+    return randomCategories;
+  };
+
 const MainPage: React.FC = () => {
-  const [categories, setCategories] = useState(['Tech', 'Fashion', 'Hollywood']);
+  const [categories, setCategories] = useState(getRandomCategories());
   const [showForm, setShowForm] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -57,7 +73,7 @@ const MainPage: React.FC = () => {
 
   const handleRegenerate = () => {
     // Logic to fetch and set new categories
-    setCategories(['New Category 1', 'New Category 2', 'New Category 3']);
+    setCategories(getRandomCategories());
   };
 
   return (

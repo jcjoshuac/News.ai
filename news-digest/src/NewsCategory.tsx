@@ -1,4 +1,4 @@
-enum NewsCategory {
+export enum NewsCategory {
     WorldNews = "World News",
     NationalNews = "National News",
     Politics = "Politics",
