@@ -1,26 +1,4 @@
-// RecsPage.tsx
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
 
-// const RecsPage: React.FC = () => {
-//   const navigate = useNavigate();
-
-//   const goToPodcastPage = () => {
-//     navigate('/podcast');
-//   };
-
-//   const goToMainPage = () => {
-//     navigate('/');
-//   }
-
-//   return (
-//     <div>
-//       <h1>Recommendations</h1>
-//       <button onClick={goToPodcastPage}>Generate podcast</button>
-//       <button onClick={goToMainPage}>Reselect category</button>
-//     </div>
-//   );
-// };
 
 import React, { useState, useEffect } from 'react';
 import NewsItem from './recommended_news.json'; // Assuming types.ts is in the same directory
@@ -61,16 +39,23 @@ const Recommendations: React.FC = () => {
     navigate('/');
   };
 
+  const handleSelectTitle = (selectedTitle: String) => {
+    // Navigate to PodcastPage with the selected title as state
+    navigate('/podcast', { state: { title: selectedTitle } });
+  };
+
   return (
     <div className="recommendations-container">
       <h2>Recommended news</h2>
       <p>Based on your interest</p>
       <div className="news-buttons">
         {displayedNews.map((news) => (
-          <button>{news.title}</button>
+          <button onClick={() => handleSelectTitle(news.title)}>{news.title}</button>
         ))}
       </div>
-      <button onClick={handleRegenerate}>Regenerate</button>
+      <button className="regenerate-button" onClick={handleRegenerate}>
+                    &#x21bb;
+                </button>
       <button onClick={handleReselectCategory}>Reselect category</button>
     </div>
   );

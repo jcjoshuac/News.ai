@@ -60,6 +60,7 @@
   font-size: 24px;
   line-height: 1;
   margin-left: 10px; /* Add margin to the left of the regenerate button */
+  margin-bottom: 10px;
   position: relative; /* Add this to allow absolute positioning of the icon inside */
 }
 
@@ -111,3 +112,66 @@ button:hover {
   background-color: #f0f0f0;
 }
 
+/* podcast page */
+.podcast-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.podcast-player h1 {
+  font-size: large;
+  margin-bottom: 20px;
+}
+
+.podcast-player p {
+  font-size: x-large;
+  margin-bottom: 20px;
+}
+
+.podcast-player audio {
+  margin-bottom: 20px;
+}
+
+.podcast-player button {
+  padding: 10px;
+  margin-right: 5px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.podcast-player .play-pause-button {
+  font-size: 24px; /* Adjust size as needed */
+  line-height: 1; /* Aligns the icon vertically */
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%; /* Makes the button round */
+  margin: 0 10px 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+  width: 50px; /* Fixed width and height to make it circular */
+  height: 50px;
+}
+
+.podcast-player .play-pause-button:hover {
+  background-color: #f0f0f0; /* Change as per your design */
+}
+
+
+.podcast-player label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.podcast-player input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
