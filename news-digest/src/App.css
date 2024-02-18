@@ -82,3 +82,32 @@
   padding: 20px;
   border-radius: 5px;
 }
+/* RecsPage */
+.recommendations-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.news-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+

@@ -23,9 +23,11 @@ interface CategoryFormProps {
 }
 
 const CategoryForm: React.FC<CategoryFormProps> = ({ category }) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const goToRecsPage = () => {} 
+    const goToRecsPage = () => {
+        navigate('/recs');
+    } 
 
     const selectCategory = async () => {
         // const response = await fetch(/* news API */) // this sends data to the flask server
@@ -66,7 +68,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category }) => {
                     <option value="2">Somewhat familiar</option>
                     <option value="3">Very familiar</option>
                 </select>
-                <button onClick={selectCategory}>Generate news</button>
+                <button onClick={() => {selectCategory(); goToRecsPage();}}>Generate news</button>
             </div>
         </div>
     );
