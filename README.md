@@ -1,4 +1,4 @@
-# The Full Stack
+# News.ai
 
 Description: Web app providing concise, digestible news summaries in a conversational manner <br />
 
